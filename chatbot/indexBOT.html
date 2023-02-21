@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="description" content="Chat Bot">
+<meta name="keywords" content="Bot, Responses, Random">
+<meta name="author" content="Diego Silva">
+<Meta Name="Viewport" Content="Width=Device-Width, Initial-Scale=1.0">
+<link rel="icon" type="image/x-icon" href="https://media.tenor.com/Rjkh8XOiumYAAAAM/space-robots-space-robots-nft.gif"   
+<script type="text/javascript" src="bot.js"></script>
+<link rel="stylesheet" href="style2.css">
+<title> Simple Bot </title>
+</head>
+<body>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>  
+<div id="output"></div>
+<div id="container">
+    <input type="text" size="100" id="input" value="">
+</div>
+
+<!-- I believe the external link for the bot.js didn't work because there is a jquery source. But it's linked correctly--->
+<script src="bot.js"></script> 
+
+<!--  the following div was a try of adding style to the variable myArray (Outputs for Random answers are happening outside the container and I tried to put answers styled like all other answers.) -->  
+<div class='myArray'></div>
+
+<!--  jquery for the bot frame -->      
+<script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
+</div> 
+
+<script>
+  	// Questions start on 0. then, each if condition has a crescent order(1,2,3,4,5,6,7,8) // 
+    var questionNum = 0;													
+    var question = '<h1>🤖 Hello. what is your name And where are you from ? </h1>';		
+
+   // store id="output" in output variable // 
+    var output = document.getElementById('output');				
+    output.innerHTML = question;
+
+
+    // now find the array with random answers - The answers are being displayed outside the container because I don't know how to style javascrip variables yet// 
+  const myArray = [ 'unsure for now', 'try again', 'Dont think so', 'Dont count on it', 'Not looking too good probably'];
+
+   const scale = [(id=1,' the edge you can only go up from here'), 
+   (id=2,' Things will get better. '),
+   (id=3, ' Thigns will get better'),
+   (id=4, ' is nearly average. nothing to worry'),
+   (id=5, ' amazing. Adopt a pet.'),
+   (id=6,' above the average. you are fine'),
+   (id=7, ' means good already.'),
+   (id=8, ' good that you are felling well'),
+   (id=9, ' wow what happened ? I am happy for you'),
+   (id=10, ' can you actually win the lottery ?')];
+
+   
+    // The name of the function is bot // 
+    function bot() { 
+    var input = document.getElementById("input").value;
+    console.log(input);
+
+    // bot will answer hello + input // 
+    if (questionNum == 0) {
+    output.innerHTML = '<h2>hello ' + input + '!</h2>';// output response
+    document.getElementById("input").value = "";   		// clear text box
+    question = '<h2>How are you felling on a scale from 1-10 ?</h2>';		    	// load next question		
+    setTimeout(timedQuestion, 2000);									// output next question after 2sec delay
+    }
+    // bot will answer according to the number (scale from 1 to 10 ) - array scale // 
+    else if (questionNum == 1) {
+    output.innerHTML = id = scale.find(id => input);
+    console.log(id)
+    question =  '<h1>How old are you?</h1>';				      	
+    setTimeout(timedQuestion, 2000);
+    }   
+    // this condition has a random number as an answer for the bots age. // 
+    else if (questionNum == 2) {
+    output.innerHTML = '<h1>It is certain that you you were born in ' + (2023 - input);	' </h1>';
+    document.getElementById("input").value = "";   		// clear text box
+    question = '<h1>  I am ' +  Math.round(input + (Math.random() *7 )) +' years old(random number) . I know how to multiply. Type a number so I can multiply by 10<h1>';
+    setTimeout(timedQuestion, 2000);
+    }
+    // bot does some multiplication and then asks for a random  question // 
+    else if (questionNum == 3) {
+    output.innerHTML  = '<h1>  ' + input +  ' Multiplied by 10 is esqual to ' + (input * 10); '</h1>';  
+    document.getElementById("input").value = "";   		// clear text box
+    question = '<h1> Now ask me a Random question.</h1>';
+    setTimeout(timedQuestion, 2000);	
+    }
+    else if (questionNum == 4) {
+    output.innerHTML = rand = myArray[(Math.random() * myArray.length) | 0]
+    console.log(rand)
+    document.getElementById("input").value = "";   		// clear text box
+    question =  '<h1>  Ok. Do you like this bot ? Yes(Y) or No(N) ? .</h1>';
+    setTimeout(timedQuestion, 2000);	
+    }
+    else if (questionNum == 5) {
+    output.innerHTML = '<h1> ' +input+  '? you are right. I agree.</h1>';
+    document.getElementById("input").value = "";   		// clear text box
+    question =  '<h1> Ask me another question.</h1>';
+    setTimeout(timedQuestion, 2000);	
+    }
+    else if (questionNum == 6) {
+    output.innerHTML = rand = myArray[(Math.random() * myArray.length) | 0]
+    console.log(rand)
+    document.getElementById("input").value = "";   		// clear text box
+    question =  '<h1>  As you can see I dont know much. Im not Chatgpt . Are you enjoying techtalent experience ? </h1>';
+    setTimeout(timedQuestion, 2000);	
+    }
+    else if (questionNum == 7) {
+    output.innerHTML = '<h1> ' +input+  ' Great.</h1>';
+    document.getElementById("input").value = "";   		// clear text box
+    question =  '<h1>  Ok. would you like to ask me anymore questions ? .</h1>';
+    setTimeout(timedQuestion, 2000);	
+    }
+    else if (questionNum == 8) {
+    output.innerHTML = '<h1> ' +input+  '? I gotta go now.</h1>';
+    document.getElementById("input").value = "";   		// clear text box
+    question =  '<h1> Low battery. Bye. .</h1>';
+    setTimeout(timedQuestion, 2000);	
+    }
+  
+  }
+
+  var randomNumber = Math.floor(Math.random()*20);
+
+    function newQuote() {
+  var randomNumber = Math.floor(Math.random() * (quotes.length));
+  document.getElementById(" quoteDisplay" ).innerHTML = quotes[randomNumber];
+    }
+   
+
+
+
+function timedQuestion() {
+    output.innerHTML = question;
+}
+
+//push enter key (using jquery), to run bot function.
+$(document).keypress(function(e) {
+  if (e.which == 13) {
+    bot();																						// run bot function when enter key pressed
+    questionNum++;																		// increase questionNum count by 1
+  }
+});
+
+ 
+
+</script>
+
+
+</body>
+</html>
